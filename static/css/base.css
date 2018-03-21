@@ -1,0 +1,46 @@
+body{
+    overflow-x:hidden;
+}
+.nav-brand img{
+    padding-top:8px;
+}
+#login{
+    margin-right:10px;
+}
+
+.navbar{
+    font-size:16px;
+}
+#navhead{
+    margin-left:20px;
+}
+.brand-img{
+    margin-right:20px;
+}
+
+.container-fluid{
+  margin-top:-15px !important;
+}
+
+.jumbotron{background-color: rgba(35,34,65, 0.84);
+color:rgb(193,192,205);
+}
+.v2a{color: grey; -webkit-transition: all .3s ease-out;}
+.v2a:hover{color: white;text-decoration: underline;}
+
+
+.jum2{
+  margin-top:-20px;
+  background-color:rgba(42,41,67,1);
+}
+
+.dropdown-menu>li>a:hover{
+  background-color: rgba(207, 224, 231,0.8);
+}
+
+.pm{
+  margin-right:15px;
+}
+.glyphicon-log-out,.glyphicon-user{
+margin-right:5px;
+}
