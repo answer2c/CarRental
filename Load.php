@@ -17,12 +17,15 @@
                     }
                    
                 }else{
-                    exit('error');
-                    // exit($file);
+                    exit('Load error');
+                 
                 }
             
         }
 
+        /**
+         * 获取文件路径
+         */
         public static function findFile($class){
             $space=substr($class,0,strpos($class,'\\'));//获取顶级命名空间
             $dir=self::$DireMap[$space];

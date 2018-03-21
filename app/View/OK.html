@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <title>租车</title>
+    <title>操作成功</title>
     <link rel="stylesheet" href="http://localhost:8080/CarRental/static/css/bootstrap.css">
     <link rel="stylesheet" href="http://localhost:8080/CarRental/static/css/base.css">
    
@@ -45,59 +45,25 @@
 
                             </ul>
 
-                            <ul class="nav navbar-nav navbar-right" >
-                                
-                            <?php echo $nav_data ?>
-                            </ul>
+                         
                         </div>
    
                 </div>
 
 
            <div class="jumbotron">
-              
+                      
                 <div class="container">
-                   
-                            <form action="./?c=FormHandle&m=rentHandle" method="post">
-                                <div class="form-group">
-                                    <div class="input-group col-sm-4 col-md-3 col-xs-6">
-                                        <select name="cartype" id="" class="form-control ">
-                                        
-                                        <?php echo $car_data;?>
-                                        
-                                        </select>
-                                       <span class="input-group-btn">
-                                         <input type="submit" value="搜索" name="sub" class="btn btn-success">
-                                       </span>
-                                    </div>                                 
-                                </div>
-                              
-                            </form>
                   
-
-                    <div class="row cartable">
-                        <div class="col-xs-12  col-md-7 table-responsive">
-                                <table class="table  ">
-                                    <tr>
-                                        <td>车辆类型</td>
-                                        <td>车辆型号</td>
-                                        <td>车牌号</td>
-                                        <td>租借价格</td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <?php echo $carMess; ?>
-
-                                </table>
-                        </div>
-                    </div>  
-                 
-
-                          
-                </div> 
+                       
+                       
+                        
+                <h2>注册成功</h2>  
               
-              
-                
+      
+
+
+                 </div> 
             </div>
           
             <div class="jumbotron jum2">

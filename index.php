@@ -7,6 +7,7 @@
 
 	
 	if(!isset($_GET['c'])||!isset($_GET['c'])){
+		
 		$run =new app\Controller\Index();
 		$run->index();
 	}else{

@@ -31,22 +31,26 @@
             $other='group by type';
 
             $data1=$car->select($col1,null,null,$other);
-            
-            foreach($data1 as $val){
-                $car_data.='<option>'.$val['type'].'</option>';
-
+            if(is_array($data1)){
+                foreach($data1 as $val){
+                    $car_data.='<option>'.$val['type'].'</option>';
+    
+                }
+            }else {
+                echo $data1;
             }
+           
 
 
             $col2=array('*');
             $con2=array("returned"=>"1");
            
             $data2=$car->select($col2,$con2);//获取到全部未借出汽车信息
+            if(is_array($data1)){
             foreach($data2 as $val){
                     $carMess.='<tr><td>'.$val['type'].'</td><td>'.$val['model'].'</td><td>'.$val['no'].'</td><td>'.$val['price'].'</td><td><a href="#">详细信息</a></td><td><a href="#">租借</a></td></tr>';
             }
-
-
+        }
 
             require 'app/view/rent.php';
         }
