@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
     <title>还车</title>
-    <link rel="stylesheet" href="http://localhost:8080/CarRent/static/css/bootstrap.css">
-    <link rel="stylesheet" href="http://localhost:8080/CarRent/static/css/base.css">
+    <link rel="stylesheet" href="http://localhost:8080/CarRental/static/css/bootstrap.css">
+    <link rel="stylesheet" href="http://localhost:8080/CarRental/static/css/base.css">
     </style>
     
 </head>
@@ -21,7 +21,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a href="" class="nav-brand brand-img"><img src="http://localhost:8080/CarRent/static/img/banner.png" alt=""></a>
+                            <a href="" class="nav-brand brand-img"><img src="http://localhost:8080/CarRental/static/img/banner.png" alt=""></a>
                         </div>
 
                         <div class="collapse navbar-collapse hidemenu ">
@@ -103,8 +103,8 @@
               
           </div>
 
-    <script src="http://localhost:8080/CarRent/static/js/jquery-3.2.1.js"></script>
-    <script src="http://localhost:8080/CarRent/static/js/bootstrap.min.js"></script>
+    <script src="http://localhost:8080/CarRental/static/js/jquery-3.2.1.js"></script>
+    <script src="http://localhost:8080/CarRental/static/js/bootstrap.min.js"></script>
 
 
 </body>

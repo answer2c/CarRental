@@ -6,55 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
     <title>欢迎登陆</title>
-    <link rel="stylesheet" href="http://localhost:8080/CarRent/static/css/bootstrap.css">
-    <style>
-        body{
-            overflow-x:hidden;
-        }
-        .nav-brand img{
-            padding-top:8px;
-        }
-        #login{
-            margin-right:10px;
-        }
-
-        .navbar{
-            font-size:16px;
-        }
-        #navhead{
-            margin-left:40px;
-        }
-        .brand-img{
-            margin-right:20px;
-        }
-        
-      .container-fluid{
-          margin-top:-15px !important;
-      }
-  
-      .jumbotron{background-color: rgba(35,34,65, 0.84);
-        color:rgb(193,192,205);
-        }
-      .v2a{color: grey; -webkit-transition: all .3s ease-out;}
-      .v2a:hover{color: white;text-decoration: underline;}
-     
-
-      .jum2{
-          margin-top:-20px;
-          background-color:rgba(42,41,67,1);
-      }
-
-      .dropdown-menu>li>a:hover{
-          background-color: rgba(207, 224, 231,0.8);
-      }
-     
-      .pm{
-          margin-right:15px;
-      }
-      .glyphicon-log-out,.glyphicon-user{
-        margin-right:5px;
-      }
-    </style>
+    <link rel="stylesheet" href="http://localhost:8080/CarRental/static/css/bootstrap.css">
+    <link rel="stylesheet" href="http://localhost:8080/CarRental/static/css/base.css">
+   
     
 </head>
 <body>
@@ -67,7 +21,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a href="" class="nav-brand brand-img"><img src="http://localhost:8080/CarRent/static/img/banner.png" alt=""></a>
+                            <a href="" class="nav-brand brand-img"><img src="http://localhost:8080/CarRental/static/img/banner.png" alt=""></a>
                         </div>
 
                         <div class="collapse navbar-collapse hidemenu ">
@@ -151,8 +105,8 @@
 
 
 
-    <script src="http://localhost:8080/CarRent/static/js/jquery-3.2.1.js"></script>
-    <script src="http://localhost:8080/CarRent/static/js/bootstrap.min.js"></script>
+    <script src="http://localhost:8080/CarRental/static/js/jquery-3.2.1.js"></script>
+    <script src="http://localhost:8080/CarRental/static/js/bootstrap.min.js"></script>
 
 
 </body>
