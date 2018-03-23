@@ -1,13 +1,13 @@
 <?php
     namespace common;
        class page{
-        private $total;     //总共记录数
-        private $rows;      //每页的行数
-        private $limit;  
-        private  $uri;
-        private $page;
-        private $pagenum;
-        private $arr=array("header"=>"条记录","pre"=>"前一页","next"=>"下一页","first"=>"首页","last"=>"尾页");
+        public $total;     //总共记录数
+        public $rows;      //每页的行数
+        public $limit;  
+        public  $uri;
+        public $page;
+        public $pagenum;
+      
         
         function __construct($total,$rows='5'){
             $this->total=$total;
@@ -53,12 +53,12 @@
             * @return string
             */
         
-          private function setlimit(){
+          public function setlimit(){
               $diff=$this->total-$this->rows*($this->page-1);
                if($this->page==$this->pagenum){
                    return "Limit ".$this->rows*($this->page-1).",".$diff;  
                }else
-              return "Limit ".$this->rows*($this->page-1).",{$this->rows}";
+              return $this->rows*($this->page-1).",{$this->rows}";
               
               
               
@@ -90,7 +90,7 @@
            * 下一页
            * @return string
            */
-          private function next(){
+          public function next(){
               if($this->page==$this->pagenum)
                   return "&page={$this->pagenum}";
                else 
@@ -101,7 +101,7 @@
            * 上一页
            * @return string
            */
-          private function pre(){
+          public function pre(){
               if($this->page==1)
                   return "&page=1";
               else 
@@ -115,22 +115,23 @@
            * 页面列表
            * @return string|number
            */
-          private function pagelist(){
+         public function pagelist(){
               $listnum=4;
               $list="";
               for($i=$listnum;$i>0;$i--){
                   $page=$this->page-$i;
                   if($page<=0)continue;   
-                 $list.="<a href='{$this->uri}&page=$page'>".$page."</a>";
+                 $list.="<li><a href='{$this->uri}&page=$page'>".$page.'</a></li>';
                  
               }
-              $list.=$this->page;
+
+              $list.='<li><a href="#" class="disabled">'.$this->page.'</a></li>';
               
               for($i=1;$i<$listnum;$i++){
                   $page=$this->page+$i;
                   if($page>$this->pagenum) break;
                   
-                  $list.="<a href='{$this->uri}&page=$page'>".$page."</a>";
+                  $list.="<li><a href='{$this->uri}&page=$page'>".$page.'</a></li>';
                   
                   
                   
@@ -140,40 +141,7 @@
           }
           
    
-         /**
-          * 显示分页信息
-          * @return string
-          */
-          function forpage(){
-              //echo $this->uri;
-              $html= "共".$this->total.$this->arr['header']."&nbsp;&nbsp;";
-              $html.="当前第".$this->page."页"."&nbsp;&nbsp;";
-              
-              $html.="本页显示".($this->end()-$this->start()+1)."条记录"."&nbsp;&nbsp;";
-              //$html.="本页显示第{$this->start()}-{$this->end()}条记录"."&nbsp;&nbsp;";
-              $html.="{$this->page}/{$this->pagenum}页"."&nbsp;&nbsp;";
-              $html.="<a href='$this->uri&page=1'>".$this->arr['first']."</a> &nbsp;";
-              $html.="<a href='$this->uri&page={$this->pagenum}'>".$this->arr['last']."</a> &nbsp;";
-              $html.="<a href='$this->uri"."{$this->pre()}'>"."上一页"."</a>"."&nbsp;&nbsp;";
-              $html.="<a href='$this->uri"."{$this->next()}'>"."下一页"."</a>"."&nbsp;&nbsp;";
-              $html.=$this->pagelist();
-              $html.="<input type='text' id='page' name='page'  onkeydown='javascript: if(event.keyCode==13){
-                    if(this.value<=".$this->pagenum."&&this.value>0){
-                           var page=this.value;     }else{
-                           var page=".$this->page."
-                               }
-                        if(page!=\"\"){location=\"".$this->uri."&page=\"+page}
-                   }    ' >";
-              
-              $html.="<input type='button' value='GO' onclick='javascript:
-                        if(this.previousSibling.value<=".$this->pagenum."&&this.previousSibling.value>0){
-                           var page=this.previousSibling.value;     }else{
-                           var page=".$this->page."
-                               }
-         
-              if(page!=\"\") window.location=\"".$this->uri."&page=\"+page;'>";
-              return $html;
-          }
+ 
           
         
          

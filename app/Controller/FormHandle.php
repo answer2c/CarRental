@@ -43,11 +43,19 @@
         
                     }       
 
+
+
                     $col2=array('*');
                     $con2=array("returned"=>"1","type"=>$type);
-                    $data2=$car->select($col2,$con2);
+
+                    $get_Mess=$car->fpage($col2,$con2);
+                  
+                    $page_Mess=$get_Mess[0];
+                    $limit=$get_Mess[1];
+                    $data2=$car->select($col2,$con2,$limit);
+                 
                     foreach($data2 as $val){
-                        $carMess.='<tr><td>'.$val['type'].'</td><td>'.$val['model'].'</td><td>'.$val['no'].'</td><td>'.$val['price'].'</td><td><a href="#">详细信息</a></td><td><a href="#">租借</a></td></tr>';
+                        $carMess.='<tr><td>'.$val['type'].'</td><td>'.$val['model'].'</td><td>'.$val['num'].'</td><td>'.$val['price'].'</td><td><a href="#">详细信息</a></td><td><a href="#">租借</a></td></tr>';
                          }
                 
                 }

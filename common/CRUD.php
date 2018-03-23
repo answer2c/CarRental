@@ -4,20 +4,22 @@
     class CRUD{
 
             private static $db;
+            public $selectdata;//查询结果
+            public $total;//结果条数
+
 
             public function __construct(){
              
                 self::$db=DbConn::getInstance()->DBC;
                 
-              
-              
+                        
             }
 
 
                     /**
              * 查询函数
              */
-            public static function select($column=array("*"),$condition=null,$table,$limit=null,$other=null){
+            public function select($column=array("*"),$condition=null,$table,$limit=null,$other=null){
                 $col=implode(',',$column);
                 $sql='select '.$col.' from '.$table;
                 if($condition){
@@ -29,7 +31,7 @@
                     $sql.=' where'.$con;
                                  }
                 if($other){
-                    $sql.=" ".$other;
+                    $sql.=" ".$other; 
                 }
 
                 if($limit){
@@ -38,7 +40,8 @@
                 $st=self::$db->prepare($sql);
                  $st->execute();
                  $data=$st->fetchAll(\PDO::FETCH_ASSOC);
-                return $data;
+                 $this->selectdata=$data;
+                 $this->total=$st->rowCount();
             }
 
 

@@ -2,7 +2,7 @@
     namespace app\Controller;
    
     use app\Model\Car;
-
+    use common\page;
 
     class Index{
 
@@ -25,11 +25,13 @@
 
             $carMess='';
             $car_data='';
+          
+           
 
             $car=new Car();
+        
             $col1=array('type');
             $other='group by type';
-
             $data1=$car->select($col1,null,null,$other);
             if(is_array($data1)){
                 foreach($data1 as $val){
@@ -39,16 +41,26 @@
             }else {
                 echo $data1;
             }
-           
 
+         
+            //输出分页信息
+           
 
             $col2=array('*');
             $con2=array("returned"=>"1");
-           
-            $data2=$car->select($col2,$con2);//获取到全部未借出汽车信息
+             
+            
+            
+
+
+            $get_Mess=$car->fpage($col2,$con2);
+            $page_Mess=$get_Mess[0];
+            $limit=$get_Mess[1];
+            $data2=$car->select($col2,$con2,$limit);//获取到全部未借出汽车信息
+            
             if(is_array($data1)){
             foreach($data2 as $val){
-                    $carMess.='<tr><td>'.$val['type'].'</td><td>'.$val['model'].'</td><td>'.$val['no'].'</td><td>'.$val['price'].'</td><td><a href="#">详细信息</a></td><td><a href="#">租借</a></td></tr>';
+                    $carMess.='<tr><td>'.$val['type'].'</td><td>'.$val['model'].'</td><td>'.$val['num'].'</td><td>'.$val['price'].'</td><td><a href="#">详细信息</a></td><td><a href="#">租借</a></td></tr>';
             }
         }
 
