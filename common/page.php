@@ -59,9 +59,7 @@
                    return $this->rows*($this->page-1).",".$diff;  
                }else
               return $this->rows*($this->page-1).",{$this->rows}";
-              
-              
-              
+                     
           }
     
            /**

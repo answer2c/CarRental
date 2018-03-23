@@ -3,24 +3,25 @@
     use \common\DbConn;
     use  \common\CRUD;
     class User{
-
+        public static $curd;
         public function __construct(){
-            $curd=new CRUD();
+            self::$curd=new CRUD();
         }
           /**
              * 查询
              */
             
             public function select($column,$condition=null,$limit=null,$other=null){
-             
-                $data=CRUD::select($column,$condition,'user',$limit,$other);
+                
+                self::$curd->select($column,$condition,'user',$limit,$other);
+                $data=self::$curd->selectdata;
                 return $data;
               }
 
 
             public  function insert($val,$col=null){
              
-                $data=CRUD::insert($val,'user',$col);
+                self::$curd->insert($val,'user',$col);
                 return $data;
             }
 

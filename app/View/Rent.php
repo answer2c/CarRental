@@ -84,7 +84,6 @@
                                         <td>车牌号</td>
                                         <td>租借价格</td>
                                         <td></td>
-                                        <td></td>
                                     </tr>
                                     <?php echo $carMess; ?>
 

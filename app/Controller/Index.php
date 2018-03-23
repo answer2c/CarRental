@@ -15,6 +15,7 @@
             require 'app/View/home.php';
         }
 
+
         /**
          * 跳转租车页面
          */
@@ -42,10 +43,7 @@
                 echo $data1;
             }
 
-         
-            //输出分页信息
-           
-
+ 
             $col2=array('*');
             $con2=array("returned"=>"1");
              
@@ -54,13 +52,14 @@
 
 
             $get_Mess=$car->fpage($col2,$con2);
+
             $page_Mess=$get_Mess[0];
             $limit=$get_Mess[1];
             $data2=$car->select($col2,$con2,$limit);//获取到全部未借出汽车信息
             
             if(is_array($data1)){
             foreach($data2 as $val){
-                    $carMess.='<tr><td>'.$val['type'].'</td><td>'.$val['model'].'</td><td>'.$val['num'].'</td><td>'.$val['price'].'</td><td><a href="#">详细信息</a></td><td><a href="#">租借</a></td></tr>';
+                    $carMess.='<tr><td>'.$val['type'].'</td><td>'.$val['model'].'</td><td>'.$val['num'].'</td><td>'.$val['price'].'</td><td><a href="./?c=index&m=rental&id='.$val['carid'].'">租借</a></td></tr>';
             }
         }
 
@@ -73,7 +72,7 @@
         public function  back(){
          
             //检查session,若没登陆 则提示并回退到上一界面
-            if(!isset($_SESSION['user'])){
+            if(isset($_SESSION['user'])){
                 self::goError();
                 echo '<script>
                 history.back();
@@ -85,8 +84,41 @@
             
         }
 
+        public function rental(){
+
+            if(isset($_SESSION['user'])){
+                self::goError();
+                echo '<script>
+                history.back();
+                </script>';
+            }else{
+                if(!isset($_GET['id'])){
+                    return;
+                }else{
+                    $car=new Car();
+                    $col=array('*');
+                    $con=array("carid"=>$_GET['id']);
+                    $data=$car->select($col,$con)[0];
+                    $date=date("Y年n月j日",time());
+                    $carMess='<tr><td>'.$data['type'].'</td><td>'.$data['model'].'</td><td>'.$data['num'].'</td><td>'.$data['price'].'</td><td>'.$date.'</tr>';
+                    //var_dump($data);
+                }
+            }
+
+             require 'app/View/rental.php';
+
+        }
+
+
+
+
+        public static function login(){
+            require 'app/view/login.php';
+        }
+
+
         /**
-         * 跳转至登录页面
+         * 跳转至注册页面
          */
         public static function register(){
                 require 'app/view/register.php';
@@ -100,17 +132,21 @@
         }
 
 
+        public static function logout(){
+            
+        }
         
         /**
          * 查看是否有用户session信息
          * 根据登录情况生成导航
          */
         public static function checkSession(){
-
-            if(isset($_SESSION['user'])){
+            session_start();
+         
+            if(isset($_SESSION['username'])){
                 $data='<li><a href="http://"><span class="glyphicon glyphicon-user"></span>个人信息 </a></li>
                
-                <li class="pm"><a href="http://"> <span class="glyphicon glyphicon-log-out"></span>注销 </a></li>';
+                <li class="pm"><a href="./?c=index&m=logout"> <span class="glyphicon glyphicon-log-out"></span>注销 </a></li>';
             }else{
                 $data=' <li><a href="./?c=index&m=login">登录</a></li>
                     

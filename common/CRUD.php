@@ -28,7 +28,7 @@
                         $con.=' '.$key.'="'.$value.'" and';
                     }
                     $con=substr($con,0,-3);
-                    $sql.=' where'.$con;
+                    $sql.=' where'.$con.' ' ;
                                  }
                 if($other){
                     $sql.=" ".$other; 

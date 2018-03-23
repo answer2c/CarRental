@@ -12,11 +12,9 @@
          * 处理rent页面的表单
          */
         public function rentHandle(){
-
-            if(!isset($_POST['sub'])){
-                exit();
-            }
-                        //检查session
+            session_start();
+          
+            //检查session
             $nav_data=Index::checkSession();
 
             $carMess='';
@@ -28,25 +26,29 @@
 
             $data1=$car->select($col1,null,null,$other);
 
-         
            
-                if(isset($_POST['cartype'])){    
-                    $type=$_POST['cartype'];
+                if(isset($_POST['cartype'])){                
+                    $_SESSION['type']=$_POST['cartype'];
+                    $type=$_POST['cartype'];                   
+                                
+                }else{
+                   $type=$_SESSION['type'];
+               }
+
+                foreach($data1 as $val){
+                    if($val['type']==$type){
+                        $car_data.='<option selected>'.$val['type'].'</option>';
+                    }else{
+                        $car_data.='<option>'.$val['type'].'</option>';
+                    }
+                }
+                          
+
+
                     
-                    foreach($data1 as $val){
-                        if($val['type']==$type){
-                            $car_data.='<option selected>'.$val['type'].'</option>';
-                        }else{
-                            $car_data.='<option>'.$val['type'].'</option>';
-                        }
-                       
-        
-                    }       
-
-
-
                     $col2=array('*');
-                    $con2=array("returned"=>"1","type"=>$type);
+                   
+                    $con2=array("returned"=>"1","type"=>$type); 
 
                     $get_Mess=$car->fpage($col2,$con2);
                   
@@ -55,14 +57,10 @@
                     $data2=$car->select($col2,$con2,$limit);
                  
                     foreach($data2 as $val){
-                        $carMess.='<tr><td>'.$val['type'].'</td><td>'.$val['model'].'</td><td>'.$val['num'].'</td><td>'.$val['price'].'</td><td><a href="#">详细信息</a></td><td><a href="#">租借</a></td></tr>';
+                        $carMess.='<tr><td>'.$val['type'].'</td><td>'.$val['model'].'</td><td>'.$val['num'].'</td><td>'.$val['price'].'</td><td><a href="#">租借</a></td></tr>';
                          }
                 
-                }
-           
-
-
-
+                
             require 'app/view/rent.php';
         }
 
@@ -86,12 +84,37 @@
             $col=array($username,$pwd,$sex,$tel,1,$email,$idnum);
             $data=$user->insert($col);
             if($data){
-                self::regiSucc();
+                self::Succ();
             }else{
                 echo '<script>alert("操作失败！"); history.back();</script>';
 
             }
 
+
+        }
+
+        /**
+         * 处理登录表单
+         */
+        public function loginhandle(){
+            if(empty($_POST)){
+                exit();
+            }
+            var_dump($_POST);
+             $user=new User();
+             $username=$_POST['username'];
+             $pwd=md5('yyy');
+             $col=array('*');
+             $con=array('username'=>'yyy','passwd'=>$pwd);
+             $data=$user->select($col,$con);
+            
+             if(!is_null($data)){
+                 session_start();
+                 $_SESSION['username']=$username;
+                 header("Location:./?c=index&m=index");
+             }else{
+                echo '<script>alert("操作失败！"); history.back();</script>';
+             }
 
         }
 
@@ -127,7 +150,7 @@
 
         }
 
-        private static function regiSucc(){
+        private static function Succ(){
          require 'app/View/OK.html';
 
         }

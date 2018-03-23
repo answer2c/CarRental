@@ -8,17 +8,19 @@
      */
 
     class Car{
+            public static $curd;
                   
+            public function __construct(){
+                self::$curd=new CRUD();
+            }
             /**
              * 查询
              */
             
              public function select($column,$condition=null,$limit=null,$other=null){
-                    $s1=new CRUD();
-                    $s1->select($column,$condition,'car',$limit,$other);
-                    $data=$s1->selectdata;
                     
-
+                    self::$curd->select($column,$condition,'car',$limit,$other);
+                    $data=self::$curd->selectdata;
                     return $data;
              }
 
@@ -26,9 +28,9 @@
 
              public function fpage($column,$condition=null,$limit=null,$other=null){
                 $pageMess='';
-                $s1=new CRUD();
-                $s1->select($column,$condition,'car',$limit,$other);
-                $data=$s1->total;
+               
+                self::$curd->select($column,$condition,'car',$limit,$other);
+                $data=self::$curd->total;
                 $page=new page($data);
 
                 $pageMess.='<li><a href="'.$page->uri.$page->pre().'" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';

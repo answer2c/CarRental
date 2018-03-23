@@ -45,10 +45,7 @@
 
                             </ul>
 
-                            <ul class="nav navbar-nav navbar-right" >
-                                
-                            <?php echo $nav_data ?>
-                            </ul>
+                       
                         </div>
    
                 </div>
@@ -58,40 +55,39 @@
               
                 <div class="container">
                    
-                            <form action="./?c=RentHandle&m=handler" method="post">
-                                <div class="form-group">
-                                    <div class="input-group col-sm-4 col-md-3 col-xs-6">
-                                        <select name="cartype" id="" class="form-control ">
-                                        
-                                        <?php echo $car_data;?>
-                                        
-                                        </select>
-                                       <span class="input-group-btn">
-                                         <input type="submit" value="搜索" name="sub" class="btn btn-success">
-                                       </span>
-                                    </div>                                 
-                                </div>
+                    <form action="./?c=FormHandle&m=loginhandle" method="post" class="form-horizontal">
+                            <div class="form-group">
+                                    
+                                <label for="username" class="col-xs-5 col-sm-3 control-label">用户名：</label>
+                                <div class="col-xs-8 col-sm-5">
+                                    <input type="text" id="username" class="form-control" name="username" placeholder='username'>
+                                
+                                </div>                           
+                             </div>
+
+                            <div class="form-group">
+                         
+                                <label for="pwd" class="col-xs-5 col-sm-3 control-label">密码：</label>
+                                <div class="col-xs-8 col-sm-5">
+                                    <input type="password" id="pwd" class="form-control" name="pwd" placeholder='password'>
+                                    
+                                </div>                 
+                            </div>
+
+                            
+                            <div class="form-group">
+                                    <div class="col-md-offset-4 col-sm-2 col-xs-3">
+                                    <input type="submit" name="sub" value="登录" class="btn btn-success" >
+                                    </div>
+                                    <div class="col-sm-2 col-xs-3">
+                                    <a href="./?c=index&m=register" class="btn btn-primary">注册</a>
+                                    </div>
+                            </div>
                               
-                            </form>
+                     </form>
                   
 
-                    <div class="row cartable">
-                        <div class="col-xs-12  col-md-7 table-responsive">
-                                <table class="table  ">
-                                    <tr>
-                                        <td>车辆类型</td>
-                                        <td>车辆型号</td>
-                                        <td>车牌号</td>
-                                        <td>租借价格</td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <?php echo $carMess; ?>
-
-                                </table>
-                        </div>
-                    </div>  
-                 
+              
 
                           
                 </div> 
