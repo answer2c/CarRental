@@ -56,7 +56,7 @@
           public function setlimit(){
               $diff=$this->total-$this->rows*($this->page-1);
                if($this->page==$this->pagenum){
-                   return "Limit ".$this->rows*($this->page-1).",".$diff;  
+                   return $this->rows*($this->page-1).",".$diff;  
                }else
               return $this->rows*($this->page-1).",{$this->rows}";
               
