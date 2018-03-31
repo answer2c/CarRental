@@ -133,7 +133,14 @@
 
 
         public static function logout(){
-            
+
+            session_start();
+            $_SESSION=array();
+            if(isset($_COOKIE[session_name()])){
+                setCookie(session_name,'',time()-1);
+            }
+            session_destroy();
+            header("Location:./?c=index&m=index");
         }
         
         /**
@@ -141,7 +148,7 @@
          * 根据登录情况生成导航
          */
         public static function checkSession(){
-            session_start();
+           // session_start();
          
             if(isset($_SESSION['username'])){
                 $data='<li><a href="http://"><span class="glyphicon glyphicon-user"></span>个人信息 </a></li>
