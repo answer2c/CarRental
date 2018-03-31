@@ -111,7 +111,7 @@
              if(!is_null($data)){
                  session_start();
                  $_SESSION['username']=$username;
-                 header("Location:./?c=index&m=index");
+                 header("Location:".SITE_URL."/FormHandle/loginhandle");
              }else{
                 echo '<script>alert("操作失败！"); history.back();</script>';
              }

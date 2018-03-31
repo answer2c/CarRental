@@ -25,10 +25,11 @@
 
                         <div class="collapse navbar-collapse hidemenu ">
                             <ul class="nav navbar-nav"   >
-                                <li><a href="./?c=index&m=index">首页</a></li>
-                                <li><a href="./?c=index&m=rent">租车</a></li>
-                                <li><a href="./?c=index&m=back">还车</a></li>
-                                <li><a href="http://">车辆展示</a></li>
+                            <li class="active"><a href="<?php echo SITE_URL?>/index/index">首页</a></li>
+                               
+                            <li><a href="<?php echo SITE_URL?>/index/rent">租车</a></li>
+                            <li><a href="<?php echo SITE_URL?>/index/back">还车</a></li>
+                            <li><a href="http://">车辆展示</a></li>
                                 <li class="dropdown" >
                                     <a href="http://" data-toggle="dropdown" class="dropdown-toggle" >帮助
                                         <span class="caret"></span>

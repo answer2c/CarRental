@@ -25,9 +25,9 @@
 
                         <div class="collapse navbar-collapse hidemenu ">
                             <ul class="nav navbar-nav"   >
-                                <li><a href="./?c=index&m=index">首页</a></li>
-                                <li ><a href="./?c=index&m=rent">租车</a></li>
-                                <li><a href="./?c=index&m=back">还车</a></li>
+                                <li><a href="<?php echo SITE_URL?>/index/index">首页</a></li>
+                                <li ><a href="<?php echo SITE_URL?>/index/rent">租车</a></li>
+                                <li><a href="<?php echo SITE_URL?>/index/back">还车</a></li>
                                 <li><a href="http://">车辆展示</a></li>
                                 <li class="dropdown" >
                                     <a href="http://" data-toggle="dropdown" class="dropdown-toggle" >帮助
@@ -55,7 +55,7 @@
               
                 <div class="container">
                    
-                    <form action="./?c=FormHandle&m=loginhandle" method="post" class="form-horizontal">
+                    <form action="<?php echo SITE_URL ?>/FormHandle/loginhandle" method="post" class="form-horizontal">
                             <div class="form-group">
                                     
                                 <label for="username" class="col-xs-5 col-sm-3 control-label">用户名：</label>
@@ -80,7 +80,7 @@
                                     <input type="submit" name="sub" value="登录" class="btn btn-success" >
                                     </div>
                                     <div class="col-sm-2 col-xs-3">
-                                    <a href="./?c=index&m=register" class="btn btn-primary">注册</a>
+                                    <a href="<?php echo SITE_URL ?>/index/register" class="btn btn-primary">注册</a>
                                     </div>
                             </div>
                               

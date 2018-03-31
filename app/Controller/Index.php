@@ -70,18 +70,20 @@
          * 跳转还车页面
          */
         public function  back(){
-         
+            //session_start();
             //检查session,若没登陆 则提示并回退到上一界面
-            if(isset($_SESSION['user'])){
+            if(!isset($_SESSION['user'])){
                 self::goError();
                 echo '<script>
                 history.back();
                 </script>';
+             
             }else{
+            
                 $nav_data=self::checkSession();
                 require 'app/view/back.php';
             }
-            
+           // echo 'yes';
         }
 
         public function rental(){
@@ -153,11 +155,11 @@
             if(isset($_SESSION['username'])){
                 $data='<li><a href="http://"><span class="glyphicon glyphicon-user"></span>个人信息 </a></li>
                
-                <li class="pm"><a href="./?c=index&m=logout"> <span class="glyphicon glyphicon-log-out"></span>注销 </a></li>';
+                <li class="pm"><a href="'.SITE_URL.'/index/logout"> <span class="glyphicon glyphicon-log-out"></span>注销 </a></li>';
             }else{
-                $data=' <li><a href="./?c=index&m=login">登录</a></li>
+                $data=' <li><a href="'.SITE_URL.'/index/login">登录</a></li>
                     
-                    <li class="pm"><a href="./?c=index&m=register" id="login">注册</a></li>';
+                    <li class="pm"><a href="'.SITE_URL.'/index/register" id="login">注册</a></li>';
             }
             return $data;
         }
